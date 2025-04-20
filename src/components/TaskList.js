@@ -1,12 +1,18 @@
-import React from "react";
-import Task from "./Task";
+import React from 'react';
+import Task from './Task';
 
-function TaskList({tasks, onHandleDelete}) {
-  const tasksEl = tasks.map((task) => (
-    <Task onHandleDelete={onHandleDelete} key={task.text} category={task.category} text={task.text}/>
-  ))
+function TaskList({ tasks, onDeleteTask }) {
   return (
-    <div className="tasks"> {tasksEl} </div>
+    <div className="task-list">
+      {tasks.map((task, index) => (
+        <Task 
+          key={index}
+          text={task.text}
+          category={task.category}
+          onDelete={() => onDeleteTask(task.text)}
+        />
+      ))}
+    </div>
   );
 }
 
